@@ -5,15 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StoryVerse</title>
   <link rel="stylesheet" href="style.css">
+
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
+
   <!-- Logo / Tap for admin -->
   <div id="logo">StoryVerse</div>
 
-  <!-- Search bar -->
+  <!-- Search & categories -->
   <div id="search-bar">
     <input type="text" id="searchInput" placeholder="Search stories...">
     <div id="categories"></div>
@@ -28,15 +30,28 @@
   <!-- Notification center -->
   <div id="notifications-container"></div>
 
-  <!-- Admin panel (hidden by default) -->
+  <!-- Story modal -->
+  <div id="story-modal" class="hidden">
+    <div id="story-content">
+      <span id="close-modal">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-author"></p>
+      <img id="modal-image" src="" alt="">
+      <div id="modal-text"></div>
+      <div id="modal-episodes"></div>
+    </div>
+  </div>
+
+  <!-- Admin panel -->
   <div id="admin-panel" class="hidden">
     <h2>Admin Panel</h2>
+
     <h3>Add New Story</h3>
     <input type="text" id="storyTitle" placeholder="Title">
     <input type="text" id="storyAuthor" placeholder="Author">
     <input type="text" id="storyImage" placeholder="Image URL">
-    <textarea id="storyContent" placeholder="Story Content"></textarea>
-    <input type="text" id="storySection" placeholder="Section">
+    <textarea id="storyContent" placeholder="Full Story Content"></textarea>
+    <select id="storyCategory"></select>
     <button id="addStoryBtn">Add Story</button>
 
     <h3>Add Episode</h3>
@@ -50,6 +65,9 @@
     <textarea id="notifBody" placeholder="Body"></textarea>
     <button id="addNotifBtn">Add Notification</button>
     <button id="markAllReadBtn">Mark All as Read</button>
+
+    <h3>Stories List</h3>
+    <div id="admin-stories-list"></div>
   </div>
 
   <!-- Bottom navigation -->
@@ -73,5 +91,6 @@
 
   <!-- Main Script -->
   <script src="script.js"></script>
+
 </body>
 </html>
